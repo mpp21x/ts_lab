@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>
+Hello
+</button>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.0/rxjs.umd.min.js"></script>
+<script>
+    const {fromEvent, concatMap, interval, take, tap} = rxjs;
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(
+        concatMap(ev => interval(1000).pipe(
+        ))
+    );
+    result.subscribe(x => console.log(x));
+</script>
+</html>

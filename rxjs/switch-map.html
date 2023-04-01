@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>
+Hello
+</button>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.0/rxjs.umd.min.js"></script>
+<script>
+    const {fromEvent, switchMap, interval} = rxjs;
+    const clicks = fromEvent(document, 'click');
+    const result = clicks.pipe(switchMap(() => interval(1000)));
+    result.subscribe(x => console.log(x));
+</script>
+</html>
