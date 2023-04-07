@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "a82d55ad-6e69-4d50-8871-f847bbd0c1aa",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "959686"
+	},
+	"item": [
+		{
+			"name": "first",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"str\": 10000,\n    \"num\": 1.00,\n    \"int\": 1.01,\n    \"bool\": true\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/first",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "second",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"str_arr\": [\n        \"hello\",\n        \"world\"\n    ],\n    \"num_arr\": [\n        1.1,\n        2.2\n    ],\n    \"int_arr\": [\n        1,\n        2\n    ],\n    \"bool_arr\": [\n        true,\n        false,\n        \"dqwd\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/second",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"second"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "second array",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"str\": 10000,\n    \"num\": 1.00,\n    \"int\": 1.01,\n    \"bool\": true\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/second_array",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"second_array"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,134 @@
+openapi: 3.0.3
+
+info:
+  title: Ping API
+  version: 1.0.0
+
+paths:
+  /object:
+    post:
+      operationId: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object'
+      responses:
+        200:
+          description: 'q'
+  /object_arr:
+    post:
+      operationId: object_arr
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object_arr'
+      responses:
+        200:
+          description: 'q'
+  /object_arr_arr:
+    post:
+      operationId: object_arr_arr
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object_arr_arr'
+      responses:
+        200:
+          description: 'q'
+  /one_of:
+    post:
+      operationId: one_of
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/one_of"
+      responses:
+        200:
+          description: Created
+components:
+  schemas:
+    object:
+      type: object
+      properties:
+        str:
+          type: string
+          minLength: 1
+          maxLength: 5
+          example: "hello"
+        num:
+          type: number
+          minimum: 0
+          maximum: 10
+        int:
+          type: integer
+          minimum: 0
+          maximum: 10
+        bool:
+          type: boolean
+          example: true
+        enum_str:
+          type: string
+          enum:
+            - "male"
+            - "female"
+          example: "hello"
+      example: {"str": "hello", "num": 1.1, "int": 1, "bool": true}
+      required:
+        - str
+        - num
+        - int
+        - bool
+        - enum_str
+    object_arr:
+      type: object
+      properties:
+        str_arr:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 5
+            example: "hello"
+          example: ["hello", "world"]
+        num_arr:
+          type: array
+          items:
+            type: number
+            minimum: 0
+            maximum: 10
+          example: [1.1, 2.2]
+        int_arr:
+          type: array
+          items:
+            type: integer
+            minimum: 0
+            maximum: 10
+          example: [1, 2]
+        bool_arr:
+          type: array
+          items:
+            type: boolean
+            example: true
+          example: [true, false]
+      required:
+        - str_arr
+        - num_arr
+        - int_arr
+        - bool_arr
+    object_arr_arr:
+      type: array
+      items:
+        $ref: '#/components/schemas/object_arr'
+      example: [{"str_arr": ["hello", "world"], "num_arr": [1.1, 2.2], "int_arr": [1, 2], "bool_arr": [true, false]}]
+    one_of:
+      type: array
+      items:
+        oneOf:
+          - $ref: '#/components/schemas/object'
+          - $ref: '#/components/schemas/object_arr'
+          - $ref: '#/components/schemas/object_arr_arr'
+

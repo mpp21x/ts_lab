@@ -23,5 +23,23 @@ const result = clicks.pipe(
 );
 result.subscribe(x => console.log(x));
 ```
-* `switchMap` ：將 source 轉換成新的 source，並且會取消前一個 source，只會保留最後一個 source。
+* `switchMap` ：將 value 轉換成新的 Observable 並取出新的 observable 裏面的 value，如果 source 連發出數個 values，如果轉成的 observable 是有用類似 `timer` 等 observable，則 values 只會變成 value 。
 * `concatMap`：將 source 轉換成新的 source，並且會等待前一個 source 完成後，才會開始下一個 source。
+
+#### Understanding RxJS map, mergeMap, switchMap and concatMap
+
+* [連結](https://luukgruijs.medium.com/understanding-rxjs-map-mergemap-switchmap-and-concatmap-833fc1fb09ff#:~:text=Use%20mergeMap%20if%20you%20simply,order%20is%20important%20to%20you.)
+
+
+Mapping data to the format you need is a common task. RxJS comes with a few very neat operators that help you get the job done.
+
+To recap: map is for mapping ‘normal’ values to whatever format you need it to be.
+
+The return value will be wrapped in an Observable again, so you can keep using it in your data stream.
+
+When you have to deal with an ‘inner’ Observable it’s easier to use mergeMap, switchMap or concatMap.
+
+* Use mergeMap if you simply want to flatten the data into one Observable.
+* use switchMap if you need to flatten the data into one Observable but only need the latest value.
+* use concatMap if you need to flatten the data into one Observable and the order is important to you.
+

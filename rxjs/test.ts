@@ -1,10 +1,13 @@
-import {of, timer} from 'rxjs';
+import {concatMap, of, timer} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 
 // Function that simulates an HTTP request with a delay
 function makeRequest(value) {
     return timer(2000 * value).pipe(
-        tap(() => console.log(`Request ${value} completed`)),
+        tap((ele) => {
+            console.log(`Request ${value} completed`);
+            console.log(`ele : ${ele}`)
+        }),
     );
 }
 
@@ -17,5 +20,5 @@ source$
             return makeRequest(value);
         }),
     )
-    .subscribe(result => console.log(`Result: ${result}`));
+    .subscribe(result => console.log(`Subscribe : ${result}`));
 
